@@ -47,11 +47,12 @@ app.post('/posts', (req, res) => {
     }
   }
 
+
   BlogPost
     .create({
+      author: req.body.author,
       title: req.body.title,
-      content: req.body.content,
-      author: req.body.author
+      content: req.body.content
     })
     .then(blogPost => res.status(201).json(blogPost.serialize()))
     .catch(err => {
